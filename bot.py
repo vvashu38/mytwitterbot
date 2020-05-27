@@ -43,7 +43,7 @@ def reply_to_tweets():
         store_last_seen_id(last_seen_id, FN)
         if '#jsr' in mention.full_text.lower():
             k = str(random.randint(0,10))
-            api.update_status('Jai Shree Ram. Your lucky number is k @' + mention.user.screen_name, mention.id)
+            api.update_status('Jai Shree Ram. Your lucky number is ' + k + '. @' + mention.user.screen_name, mention.id)
 
 while True:
     reply_to_tweets()

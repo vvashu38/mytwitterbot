@@ -41,8 +41,9 @@ def reply_to_tweets():
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FN)
         if '#jsr' in mention.full_text.lower():
-            api.update_status('Jai Shree Ram @' + mention.user.screen_name, mention.id)
+            k = str(rand()%6)
+            api.update_status('(Jai Shree Ram)*k @' + mention.user.screen_name, mention.id)
 
 while True:
     reply_to_tweets()
-    time.sleep(20)
+    time.sleep(30)

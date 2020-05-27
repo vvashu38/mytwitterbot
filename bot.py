@@ -3,7 +3,6 @@ import time
 import os
 from os import environ
 
-print('this is twitter bot')
 
 CONSUMER_KEY = environ['CONSUMER_KEY']
 CONSUMER_SECRET = environ['CONSUMER_SECRET']
@@ -33,7 +32,7 @@ def store_last_seen_id(last_seen_id, file_name):
 
 
 def reply_to_tweets():
-    print("Replying")
+    print("BOT UP AND RUNNING")
     last_seen_id = retrieve_last_seen_id(FN)
     mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
     for mention in reversed(mentions):
@@ -45,4 +44,4 @@ def reply_to_tweets():
 
 while True:
     reply_to_tweets()
-    time.sleep(15)
+    time.sleep(20)

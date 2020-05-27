@@ -39,7 +39,7 @@ def reply_to_tweets():
         print(str(mention.id) + ' - ' + mention.full_text)
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FN)
-        if '#jsm' in mention.full_text.lower():
+        if '#jsr' in mention.full_text.lower():
             api.update_status('Jai Shree Ram @' + mention.user.screen_name, mention.id)
 
 while True:

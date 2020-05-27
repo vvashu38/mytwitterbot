@@ -30,11 +30,12 @@ def store_last_seen_id(last_seen_id, file_name):
     f_write.close()
     return
 
-last_seen_id = retrieve_last_seen_id(FN)
-mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
+
 
 def reply_to_tweets():
     print("Replying")
+    last_seen_id = retrieve_last_seen_id(FN)
+    mentions = api.mentions_timeline(last_seen_id,tweet_mode='extended')
     for mention in reversed(mentions):
         print(str(mention.id) + ' - ' + mention.full_text)
         last_seen_id = mention.id

@@ -2,6 +2,7 @@ import tweepy
 import time
 import random
 import os
+import string
 from os import environ
 
 
@@ -44,6 +45,12 @@ def reply_to_tweets():
         if '#jsr' in mention.full_text.lower():
             k = str(random.randint(0,100))
             api.update_status('Jai Shree Ram. Your lucky number is ' + k + '. @' + mention.user.screen_name, mention.id)
+        elif '#jodi' in mention.full_text.lower():
+            num2alpha = dict(zip(range(1, 27), string.ascii_uppercase))
+            l = random.randint(1,26)
+            api.update_status('First Letter Of The Person\'s Name You\'ll Marry to is ' + num2alpha[l] + '. @' + mention.user.screen_name, mention.id)
+            
+            
 
 while True:
     reply_to_tweets()

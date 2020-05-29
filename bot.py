@@ -50,7 +50,7 @@ def reply_to_tweets():
             api.update_status('First Letter Of The Person\'s Name You\'ll Marry to is ' + num2alpha[l] + '. @' + mention.user.screen_name, mention.id)
 
 j = api.mentions_timeline()
-print('last id' + j[0].id)
+print('last id' + str(j[0].id))
 store_last_seen_id(j[0].id,FN)         
             
 

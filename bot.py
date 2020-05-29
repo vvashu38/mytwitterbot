@@ -32,10 +32,6 @@ def store_last_seen_id(last_seen_id, file_name):
     f_write.close()
     return
 
-j = api.mentions_timeline()
-store_last_seen_id(j[0].id,FN)
-
-
 def reply_to_tweets():
     print("BOT UP AND RUNNING")
     last_seen_id = retrieve_last_seen_id(FN)
@@ -52,7 +48,9 @@ def reply_to_tweets():
             num2alpha = dict(zip(range(1, 27), string.ascii_uppercase))
             l = random.randint(1,26)
             api.update_status('First Letter Of The Person\'s Name You\'ll Marry to is ' + num2alpha[l] + '. @' + mention.user.screen_name, mention.id)
-            
+
+j = api.mentions_timeline()
+store_last_seen_id(j[0].id,FN)         
             
 
 while True:

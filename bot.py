@@ -19,6 +19,8 @@ api = tweepy.API(auth)
 
 
 FN = 'lastId.txt'
+j = api.mentions_timeline()
+store_last_seen_id(j[0].id,FN)
 
 def retrieve_last_seen_id(file_name):
     f_read = open(file_name, 'r')

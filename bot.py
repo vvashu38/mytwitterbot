@@ -58,7 +58,7 @@ def reply_to_tweets():
             api.update_status('First Letter Of The Person\'s Name You\'ll Marry to is ' + num2alpha[l] + '. @' + mention.user.screen_name, mention.id)
         elif '#corona' in mention.full_text.lower():
         	g = corona()
-        	api.update_status(g , mention.id)
+        	api.update_status(g + '\n@' + mention.user.screen_name, mention.id)
 
 
 j = api.mentions_timeline()
@@ -68,4 +68,4 @@ store_last_seen_id(j[0].id,FN)
 
 while True:
     reply_to_tweets()
-    time.sleep(15)
+    time.sleep(20)

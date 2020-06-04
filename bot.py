@@ -37,7 +37,7 @@ def corona():
     response = requests.request("GET", url, headers=headers)
     x = response.text
     x = eval(x)
-    a = "Confirmed Cases : " + str(x["data"]["confirmed"])  + "\n  Recovered : " + str(x["data"]["recovered"]) + "\n  Active Cases : " + str(x["data"]["active"]) + "\n Last update : " + str(x["data"]["last_update"])
+    a = "Confirmed Cases : " + str(x["data"]["confirmed"])  + "\nRecovered : " + str(x["data"]["recovered"]) + "\nActive Cases : " + str(x["data"]["active"]) + "\nLast update : " + str(x["data"]["last_update"])
     return a
 
 def reply_to_tweets():

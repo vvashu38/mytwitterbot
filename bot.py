@@ -3,6 +3,7 @@ import time
 import random
 import os
 import string
+import requests
 from os import environ
 
 
@@ -15,8 +16,6 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY,ACCESS_SECRET)
 
 api = tweepy.API(auth)
-
-
 
 FN = 'lastId.txt'
 
@@ -31,6 +30,15 @@ def store_last_seen_id(last_seen_id, file_name):
     f_write.write(str(last_seen_id))
     f_write.close()
     return
+
+def corona():
+    url = "https://covid-19-statistics.p.rapidapi.com/reports/total"
+    headers = {'x-rapidapi-host': "covid-19-statistics.p.rapidapi.com",'x-rapidapi-key': "809e94140cmsh4623b64aef87772p1dbaedjsn10eccec71da3" }
+    response = requests.request("GET", url, headers=headers)
+    x = response.text
+    x = eval(x)
+    a = "Confirmed Cases : " + str(x["data"]["confirmed"])  + "  Recovered : " + str(x["data"]["recovered"]) + "  Active Cases : " + str(x["data"]["active"]) + " Last update : " + str(x["data"]["last_update"])
+    return a
 
 def reply_to_tweets():
     print("BOT UP AND RUNNING")
@@ -48,6 +56,10 @@ def reply_to_tweets():
             num2alpha = dict(zip(range(1, 27), string.ascii_uppercase))
             l = random.randint(1,26)
             api.update_status('First Letter Of The Person\'s Name You\'ll Marry to is ' + num2alpha[l] + '. @' + mention.user.screen_name, mention.id)
+        elif '#corona' in mention.full_text.lower():
+        	g = corona()
+        	api.update_status(g , mention.id)
+
 
 j = api.mentions_timeline()
 print('last id' + str(j[0].id))

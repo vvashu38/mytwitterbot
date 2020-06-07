@@ -49,9 +49,9 @@ def reply_to_tweets():
         print(" ")
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FN)
-        if '#jsr' in mention.full_text.lower():
+        if '#ln' in mention.full_text.lower():
             k = str(random.randint(0,100))
-            api.update_status('Jai Shree Ram. Your lucky number is ' + k + '. @' + mention.user.screen_name, mention.id)
+            api.update_status('Your lucky number is ' + k + '. @' + mention.user.screen_name, mention.id)
         elif '#jodi' in mention.full_text.lower():
             num2alpha = dict(zip(range(1, 27), string.ascii_uppercase))
             l = random.randint(1,26)
